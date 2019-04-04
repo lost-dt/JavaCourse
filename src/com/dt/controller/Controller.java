@@ -2,13 +2,11 @@ package com.dt.controller;
 
 import com.dt.model.Model;
 import com.dt.view.View;
+import com.dt.input.InputStream;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+
 
 public class Controller {
     private Model model;
@@ -72,7 +70,7 @@ public class Controller {
     public String getAnimalColor(int point) {return this.model.getAnimalColor(point);}
 
 
-    private public void updateAllView(){
+    private void updateAllView(){
 
         ArrayList<String> arrayVariables = this.model.getAnimalNameVariables();
 
@@ -175,58 +173,13 @@ public class Controller {
 
     void createAnimalsFromFile(String pathToFile) {
 
-        BufferedReader br = null;
-        FileReader fr = null;
+        ArrayList<Map<String, String>> animalInfo = InputStream.animalInfoFromFile(pathToFile);
 
-        try {
+        for(Map<String, String> item : animalInfo) {
 
-            //br = new BufferedReader(new FileReader(FILENAME));
-            fr = new FileReader(pathToFile);
-            br = new BufferedReader(fr);
+            this.model.addAnimal(item, this.pointArray);
 
-            String sCurrentLine;
-
-            while ((sCurrentLine = br.readLine()) != null) {
-
-
-                String[] value_split = sCurrentLine.split("\\|");
-
-                Map<String, String> newAnimalInfo = new HashMap<>();
-
-                newAnimalInfo.put("phylum", value_split[0]);
-                newAnimalInfo.put("class", value_split[1]);
-                newAnimalInfo.put("family", value_split[2]);
-                newAnimalInfo.put("genus", value_split[3]);
-                newAnimalInfo.put("species", value_split[4]);
-                newAnimalInfo.put("subspecies", value_split[5]);
-                newAnimalInfo.put("age", value_split[6]);
-                newAnimalInfo.put("color", value_split[7]);
-
-                this.model.addAnimal(newAnimalInfo, this.pointArray);
-
-                this.pointArray ++;
-
-            }
-
-        } catch (IOException e) {
-
-            e.printStackTrace();
-
-        } finally {
-
-            try {
-
-                if (br != null)
-                    br.close();
-
-                if (fr != null)
-                    fr.close();
-
-            } catch (IOException ex) {
-
-                ex.printStackTrace();
-
-            }
+            this.pointArray ++;
 
         }
 
