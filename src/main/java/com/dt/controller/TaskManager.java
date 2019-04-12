@@ -43,7 +43,7 @@ public class TaskManager {
     private static void manipulationManager(Controller controller) {
         while (true) {
             controller.printManipulationManagerMessage();
-            int key = controller.readKeyFromConsole(1, 5);
+            int key = controller.readKeyFromConsole(1, 8);
             switch (key) {
                 case 1: {
                     controller.showAnimalsInfo();
@@ -54,13 +54,26 @@ public class TaskManager {
                     break;
                 }
                 case 3: {
-                    controller.createAnimalsFromFile("C:\\Users\\lost\\IdeaProjects\\JavaCourse\\input\\AnimalInfoFile\\AnimalInputFile.txt");
+                    controller.createAnimalsFromTextFile();
                     break;
                 }
                 case 4: {
-                    startMenu(controller);
+                    controller.writeAnimalsToTextFile();
+                    break;
                 }
                 case 5: {
+                    controller.createAnimalsFromJsonFile();
+                    break;
+                }
+                case 6: {
+                    controller.writeAnimalsToJsonFile();
+                    break;
+                }
+                case 7: {
+                    startMenu(controller);
+                    break;
+                }
+                case 8: {
                     System.exit(0);
                     break;
                 }

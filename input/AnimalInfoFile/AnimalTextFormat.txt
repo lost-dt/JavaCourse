@@ -1,0 +1,11 @@
+chord|mammals|rodents|hares|hare|white hare|2.000000|white
+chord|mammals|rodents|hares|hare|rabbit|1.200000|black
+chord|mammals|rodents|belilla|squirrel|squirrel plain|0.800000|redhead
+chord|mammals|predatory|feline|cat|siamese cat|1.500000|black
+chord|mammals|predatory|feline|cat|African golden cat|0.500000|redhead
+chord|mammals|predatory|feline|cat|Asian golden cat|11.900000|white
+chord|mammals|predatory|feline|cat|Black-footed cat|0.300000|black
+chord|mammals|predatory|canine|dog|Cockapoo|2.300000|black
+chord|mammals|predatory|canine|dog|Brittany|0.800000|white-redhead
+chord|mammals|predatory|canine|dog|Bulldog|1.300000|white-redhead
+tetst|tesr|gewgew|gew|gwe|gweg|32.000000|tge

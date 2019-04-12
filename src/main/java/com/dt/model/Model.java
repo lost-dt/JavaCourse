@@ -2,6 +2,7 @@ package com.dt.model;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Model {
@@ -61,7 +62,7 @@ public class Model {
 
         Field[] variablesNames = Animal.class.getDeclaredFields();
 
-        ArrayList<String> arrayVariables = new ArrayList<>(variablesNames.length);
+        ArrayList<String> arrayVariables = new ArrayList<String>(variablesNames.length);
         for(int i = 0; i < variablesNames.length; i++) {
             arrayVariables.add(variablesNames[i].getName());
         }
@@ -72,7 +73,7 @@ public class Model {
     // get variables values by point of array animals
     public ArrayList<String> getArrayAnimalValue(int point) {
 
-        ArrayList<String> value = new ArrayList<>();
+        ArrayList<String> value = new ArrayList<String>();
         value.add(this.animals[point].getPhylumAnimal());
         value.add(this.animals[point].getClassAnimal());
         value.add(this.animals[point].getFamilyAnimal());
@@ -83,6 +84,31 @@ public class Model {
         value.add(this.animals[point].getColorAnimal());
 
         return value;
+    }
+
+    public ArrayList<Map<String, String>> getAnimalsInfoMapFormat(int sizeModel) {
+
+        ArrayList<Map<String, String>> mapAnimalValues = new ArrayList<Map<String, String>>();
+
+
+        for(int i = 0; i < sizeModel; i ++) {
+            Map<String, String> animalValues = new HashMap<String, String>();
+
+            animalValues.put("phylum", animals[i].getPhylumAnimal());
+            animalValues.put("class", animals[i].getClassAnimal());
+            animalValues.put("family", animals[i].getFamilyAnimal());
+            animalValues.put("genus", animals[i].getGenusAnimal());
+            animalValues.put("species", animals[i].getSpeciesAnimal());
+            animalValues.put("subspecies", animals[i].getSubspeciesAnimal());
+            animalValues.put("age", Float.toString(animals[i].getAgeAnimal()));
+            animalValues.put("color", animals[i].getColorAnimal());
+
+            mapAnimalValues.add(animalValues);
+
+        }
+
+        return mapAnimalValues;
+
     }
 
     public void addAnimal(Map<String, String> newAnimalInfo, int pointArray) {

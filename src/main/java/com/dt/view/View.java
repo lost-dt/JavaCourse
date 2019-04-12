@@ -2,7 +2,7 @@ package com.dt.view;
 
 
 import com.dt.utils.TablePrinter;
-import com.dt.input.InputStream;
+import com.dt.input.ConsoleStream;
 import com.dt.input.UncorrectedKey;
 import com.dt.input.InputValidator;
 
@@ -29,37 +29,37 @@ public class View {
 
     public Map<String, String>  createAnimalFromConsole() {
 
-        Map<String, String> mapAnimalValues = new HashMap<>();
+        Map<String, String> mapAnimalValues = new HashMap<String, String>();
 
         System.out.println("Enter phylum of an animal: ");
-        mapAnimalValues.put("phylum", InputStream.stringFromConsole());
+        mapAnimalValues.put("phylum", ConsoleStream.stringFromConsole());
 
 
         System.out.println("Enter class of an animal: ");
-        mapAnimalValues.put("class", InputStream.stringFromConsole());
+        mapAnimalValues.put("class", ConsoleStream.stringFromConsole());
 
 
         System.out.println("Enter family of an animal: ");
-        mapAnimalValues.put("family", InputStream.stringFromConsole());
+        mapAnimalValues.put("family", ConsoleStream.stringFromConsole());
 
 
         System.out.println("Enter genus of an animal: ");
-        mapAnimalValues.put("genus", InputStream.stringFromConsole());
+        mapAnimalValues.put("genus", ConsoleStream.stringFromConsole());
 
 
         System.out.println("Enter species of an animal");
-        mapAnimalValues.put("species", InputStream.stringFromConsole());
+        mapAnimalValues.put("species", ConsoleStream.stringFromConsole());
 
 
         System.out.println("Enter subspecies of an animal");
-        mapAnimalValues.put("subspecies", InputStream.stringFromConsole());
+        mapAnimalValues.put("subspecies", ConsoleStream.stringFromConsole());
 
 
         System.out.println("Enter age of an animal");
-        mapAnimalValues.put("age", Float.toString(InputStream.floatFromConsole()));
+        mapAnimalValues.put("age", Float.toString(ConsoleStream.floatFromConsole()));
 
         System.out.println("Enter color of an animal");
-        mapAnimalValues.put("color", InputStream.stringFromConsole());
+        mapAnimalValues.put("color", ConsoleStream.stringFromConsole());
 
         this.cleanConsole();
 
@@ -67,15 +67,14 @@ public class View {
 
     }
 
-    public void emptyListMessage() {
-        System.out.println("List of Animals in empty.");
-    }
-
-
 
     public void workInfo() {
         System.out.println("\t\t\tLab_1\n\tTsylyuryk_Dmytro_IS_72\n\n");
 
+    }
+
+    public void printMessage(String message) {
+        System.out.println(message + "\n");
     }
 
     public void startMenuMessage() {
@@ -93,7 +92,7 @@ public class View {
             System.out.println("Write key number: ");
             try {
 
-                inputString = InputStream.stringFromConsole();
+                inputString = ConsoleStream.stringFromConsole();
                 InputValidator.validationIntNumber(inputString);
 
                 resultKey = Integer.parseInt(inputString);
@@ -121,9 +120,12 @@ public class View {
     public void manipulationManagerMessage() {
         System.out.println("\t1. Show List of Animals.");
         System.out.println("\t2. Add node from console.");
-        System.out.println("\t3. Read Animals from file (quickly).");
-        System.out.println("\t4. Go back");
-        System.out.println("\t5. Exit");
+        System.out.println("\t3. Read Animals from text formatted file.");
+        System.out.println("\t4. Write Animals to text formatted file.");
+        System.out.println("\t5. Read Animals from JSON formatted file.");
+        System.out.println("\t6. Write Animals to JSON formatted file.");
+        System.out.println("\t7. Go back");
+        System.out.println("\t8. Exit");
     }
 
     public void queryMenuMessage() {
@@ -138,24 +140,24 @@ public class View {
     public float getAgeQuery() {
         System.out.println("Write age: ");
 
-        return InputStream.floatFromConsole();
+        return ConsoleStream.floatFromConsole();
     }
 
     public String getFamilyQuery() {
         System.out.println("Write family: ");
 
-        return InputStream.stringFromConsole();
+        return ConsoleStream.stringFromConsole();
     }
 
     public String getSpeciesQuery() {
         System.out.println("Write species: ");
 
-        return InputStream.stringFromConsole();
+        return ConsoleStream.stringFromConsole();
     }
 
     public String getColorQuery() {
         System.out.println("Write color: ");
 
-        return InputStream.stringFromConsole();
+        return ConsoleStream.stringFromConsole();
     }
 }

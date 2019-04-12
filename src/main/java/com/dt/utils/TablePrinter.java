@@ -39,7 +39,7 @@ public class TablePrinter {
             cols[i].maxWidth = field.get(i).length();
         }
 
-        rows = new ArrayList<>();
+        rows = new ArrayList<Row>();
     }
 
     /**

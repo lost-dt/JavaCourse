@@ -6,40 +6,21 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 
-public class InputStream {
+public class TextFileStream {
 
-    public static String stringFromConsole() {
-        Scanner scanner = new Scanner(System.in);
+    private final String pathToFile;
 
-        return scanner.nextLine();
+
+    public TextFileStream(String pathToFile) {
+        this.pathToFile = pathToFile;
     }
 
-    public static float floatFromConsole() {
+    public ArrayList<Map<String, String>> animalsFromFile() {
 
-        Scanner scanner = new Scanner(System.in);
-
-        boolean correct;
-        String inputString = "";
-        do {
-            try {
-
-                inputString = scanner.nextLine();
-                InputValidator.validationFloatNumber(inputString);
-                correct = true;
-
-            } catch (UncorrectedNumberStream e) {
-                correct = false;
-            }
-        } while (!correct);
-
-        return Float.parseFloat(inputString);
-    }
-
-    public static ArrayList<Map<String, String>> animalInfoFromFile(String pathToFile) {
-
-        ArrayList<Map<String, String>> resultInfo = new ArrayList<>(20);
+        ArrayList<Map<String, String>> resultInfo = new ArrayList<Map<String, String>>(20);
 
         BufferedReader br = null;
         FileReader fr = null;
@@ -57,7 +38,7 @@ public class InputStream {
 
                 String[] value_split = sCurrentLine.split("\\|");
 
-                Map<String, String> newAnimalInfo = new HashMap<>();
+                Map<String, String> newAnimalInfo = new HashMap<String, String>();
 
                 newAnimalInfo.put("phylum", value_split[0]);
                 newAnimalInfo.put("class", value_split[1]);
@@ -96,5 +77,35 @@ public class InputStream {
 
         return resultInfo;
 
+    }
+
+    public void animalsToFile(ArrayList<Map<String, String>> animalsInfo) {
+        BufferedWriter bw = null;
+        FileWriter fw = null;
+
+        try {
+
+            fw = new FileWriter(this.pathToFile);
+            bw = new BufferedWriter(fw);
+
+            for(Map<String, String> animalInfo : animalsInfo) {
+                bw.write(String.format("%s|%s|%s|%s|%s|%s|%f|%s\n",
+                        animalInfo.get("phylum"), animalInfo.get("class"), animalInfo.get("family"), animalInfo.get("genus"),
+                        animalInfo.get("species"), animalInfo.get("subspecies"), Float.parseFloat(animalInfo.get("age")), animalInfo.get("color")));
+            }
+
+        } catch (IOException e) {
+            System.err.format("IOException: %s%n", e);
+        } finally {
+            try {
+                if (bw != null)
+                    bw.close();
+
+                if (fw != null)
+                    fw.close();
+            } catch (IOException ex) {
+                System.err.format("IOException: %s%n", ex);
+            }
+        }
     }
 }
