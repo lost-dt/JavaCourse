@@ -1,7 +1,7 @@
 package com.dt.controller;
 
-import com.dt.input.SerializationFileStream;
-import com.dt.input.TextFileStream;
+import com.dt.input.file.SerializationFileStream;
+import com.dt.input.file.TextFileStream;
 import com.dt.model.Model;
 import com.dt.view.View;
 
@@ -13,8 +13,8 @@ public class Controller {
     private Model model;
     private View view;
 
-    private TextFileStream textFileStream = new TextFileStream("/home/lost-dt/IdeaProjects/JavaCourse/input/AnimalInfoFile/AnimalTextFormat.txt");
-    private SerializationFileStream serializationFileStream = new SerializationFileStream("/home/lost-dt/IdeaProjects/JavaCourse/input/AnimalInfoFile/AnimalSerializationFormat.txt");
+    private TextFileStream textFileStream = new TextFileStream("/Users/x/Documents/JavaCourse/input/AnimalInfoFile/AnimalTextFormat.txt");
+    private SerializationFileStream serializationFileStream = new SerializationFileStream("/Users/x/Documents/JavaCourse/input/AnimalInfoFile/AnimalSerializationFormat.txt");
     // variable to more in array
     private int pointArray = 0;
     private int maxSizeAnimals;
@@ -105,7 +105,7 @@ public class Controller {
 
     void addAnimalFromConsole() {
 
-        Map<String, String> newAnimalInfo = this.view.createAnimalFromConsole();
+        String newAnimalInfo = this.view.createAnimalFromConsole();
 
         this.model.addAnimal(newAnimalInfo, this.pointArray);
 
@@ -187,9 +187,9 @@ public class Controller {
 
     void createAnimalsFromTextFile() {
 
-        ArrayList<Map<String, String>> animalInfo = textFileStream.animalsFromFile();
+        String[] animalInfo = textFileStream.animalsFromFile();
 
-        for(Map<String, String> item : animalInfo) {
+        for(String item : animalInfo) {
 
             this.model.addAnimal(item, this.pointArray);
 
@@ -208,18 +208,18 @@ public class Controller {
 
     void writeAnimalsToTextFile() {
 
-        ArrayList<Map<String, String>> animalsInfoMapFormat = this.model.getAnimalsInfoMapFormat(this.pointArray);
+        String[] animalsInfoMapFormat = this.model.getAnimalsInfoMapFormat(this.pointArray);
 
-        textFileStream.animalsToFile(animalsInfoMapFormat);
+        textFileStream.animalsToFile(animalsInfoMapFormat, this.pointArray);
 
     }
 
     void createAnimalsFromJsonFile() {
-        ArrayList<Map<String, String>> animalInfo = serializationFileStream.animalsFromFile();
+        String[] animalInfo = serializationFileStream.animalsFromFile();
 
-        for(Map<String, String> item : animalInfo) {
+        for(int i = 0; i < animalInfo.length - 2; i ++) {
 
-            this.model.addAnimal(item, this.pointArray);
+            this.model.addAnimal(animalInfo[i], this.pointArray);
 
             if(this.pointArray > this.maxSizeAnimals - 1) {
                 this.view.printMessage("Sorry, but size of animals max now!");
@@ -235,7 +235,8 @@ public class Controller {
     }
 
     void writeAnimalsToJsonFile() {
-        ArrayList<Map<String, String>> animalsInfoMapFormat = this.model.getAnimalsInfoMapFormat(this.pointArray);
+
+        String[] animalsInfoMapFormat = this.model.getAnimalsInfoMapFormat(this.pointArray);
 
         serializationFileStream.animalsToFile(animalsInfoMapFormat);
     }

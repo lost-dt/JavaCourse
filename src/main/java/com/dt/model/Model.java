@@ -86,24 +86,18 @@ public class Model {
         return value;
     }
 
-    public ArrayList<Map<String, String>> getAnimalsInfoMapFormat(int sizeModel) {
+    public String[] getAnimalsInfoMapFormat(int sizeModel) {
 
-        ArrayList<Map<String, String>> mapAnimalValues = new ArrayList<Map<String, String>>();
+         String[] mapAnimalValues = new String[sizeModel];
 
 
         for(int i = 0; i < sizeModel; i ++) {
-            Map<String, String> animalValues = new HashMap<String, String>();
 
-            animalValues.put("phylum", animals[i].getPhylumAnimal());
-            animalValues.put("class", animals[i].getClassAnimal());
-            animalValues.put("family", animals[i].getFamilyAnimal());
-            animalValues.put("genus", animals[i].getGenusAnimal());
-            animalValues.put("species", animals[i].getSpeciesAnimal());
-            animalValues.put("subspecies", animals[i].getSubspeciesAnimal());
-            animalValues.put("age", Float.toString(animals[i].getAgeAnimal()));
-            animalValues.put("color", animals[i].getColorAnimal());
+            String animalInfo = String.format("%s|%s|%s|%s|%s|%s|%s|%s\n",
+                    this.animals[i].getPhylumAnimal(), animals[i].getClassAnimal(), animals[i].getFamilyAnimal(), animals[i].getGenusAnimal(),
+                    animals[i].getSpeciesAnimal(), animals[i].getSubspeciesAnimal(), animals[i].getAgeAnimal(), animals[i].getColorAnimal());
 
-            mapAnimalValues.add(animalValues);
+            mapAnimalValues[i] = animalInfo;
 
         }
 
@@ -111,18 +105,20 @@ public class Model {
 
     }
 
-    public void addAnimal(Map<String, String> newAnimalInfo, int pointArray) {
+    public void addAnimal(String newAnimalInfo, int pointArray) {
+
+        String[] valueSplit = newAnimalInfo.split("\\|");
 
         Animal newAnimal = new Animal();
 
-        newAnimal.setPhylumAnimal(newAnimalInfo.get("phylum"));
-        newAnimal.setClassAnimal(newAnimalInfo.get("class"));
-        newAnimal.setFamilyAnimal(newAnimalInfo.get("family"));
-        newAnimal.setGenusAnimal(newAnimalInfo.get("genus"));
-        newAnimal.setSpeciesAnimal(newAnimalInfo.get("species"));
-        newAnimal.setSubspeciesAnimal(newAnimalInfo.get("subspecies"));
-        newAnimal.setAgeAnimal(Float.parseFloat(newAnimalInfo.get("age")));
-        newAnimal.setColorAnimal(newAnimalInfo.get("color"));
+        newAnimal.setPhylumAnimal(valueSplit[0]);
+        newAnimal.setClassAnimal(valueSplit[1]);
+        newAnimal.setFamilyAnimal(valueSplit[2]);
+        newAnimal.setGenusAnimal(valueSplit[3]);
+        newAnimal.setSpeciesAnimal(valueSplit[4]);
+        newAnimal.setSubspeciesAnimal(valueSplit[5]);
+        newAnimal.setAgeAnimal(Float.parseFloat(valueSplit[6]));
+        newAnimal.setColorAnimal(valueSplit[7]);
 
         this.animals[pointArray] = newAnimal;
 

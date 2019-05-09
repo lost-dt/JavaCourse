@@ -1,11 +1,13 @@
-{"phylum":"chord","color":"white","genus":"hares","species":"hare","family":"rodents","subspecies":"white hare","class":"mammals","age":"2.0"}
-{"phylum":"chord","color":"black","genus":"hares","species":"hare","family":"rodents","subspecies":"rabbit","class":"mammals","age":"1.2"}
-{"phylum":"chord","color":"redhead","genus":"belilla","species":"squirrel","family":"rodents","subspecies":"squirrel plain","class":"mammals","age":"0.8"}
-{"phylum":"chord","color":"black","genus":"feline","species":"cat","family":"predatory","subspecies":"siamese cat","class":"mammals","age":"1.5"}
-{"phylum":"chord","color":"redhead","genus":"feline","species":"cat","family":"predatory","subspecies":"African golden cat","class":"mammals","age":"0.5"}
-{"phylum":"chord","color":"white","genus":"feline","species":"cat","family":"predatory","subspecies":"Asian golden cat","class":"mammals","age":"11.9"}
-{"phylum":"chord","color":"black","genus":"feline","species":"cat","family":"predatory","subspecies":"Black-footed cat","class":"mammals","age":"0.3"}
-{"phylum":"chord","color":"black","genus":"canine","species":"dog","family":"predatory","subspecies":"Cockapoo","class":"mammals","age":"2.3"}
-{"phylum":"chord","color":"white-redhead","genus":"canine","species":"dog","family":"predatory","subspecies":"Brittany","class":"mammals","age":"0.8"}
-{"phylum":"chord","color":"white-redhead","genus":"canine","species":"dog","family":"predatory","subspecies":"Bulldog","class":"mammals","age":"1.3"}
-{"phylum":"tetst","color":"tge","genus":"gew","species":"gwe","family":"gewgew","subspecies":"gweg","class":"tesr","age":"32.0"}
+{"phylum":"chord","color":"white\n","genus":"hares","species":"hare","family":"rodents","subspecies":"white hare","class":"mammals","age":"2.0"}
+{"phylum":"chord","color":"black\n","genus":"hares","species":"hare","family":"rodents","subspecies":"rabbit","class":"mammals","age":"1.2"}
+{"phylum":"chord","color":"redhead\n","genus":"belilla","species":"squirrel","family":"rodents","subspecies":"squirrel plain","class":"mammals","age":"0.8"}
+{"phylum":"chord","color":"black\n","genus":"feline","species":"cat","family":"predatory","subspecies":"siamese cat","class":"mammals","age":"1.5"}
+{"phylum":"chord","color":"redhead\n","genus":"feline","species":"cat","family":"predatory","subspecies":"African golden cat","class":"mammals","age":"0.5"}
+{"phylum":"chord","color":"white\n","genus":"feline","species":"cat","family":"predatory","subspecies":"Asian golden cat","class":"mammals","age":"11.9"}
+{"phylum":"chord","color":"black\n","genus":"feline","species":"cat","family":"predatory","subspecies":"Black-footed cat","class":"mammals","age":"0.3"}
+{"phylum":"chord","color":"black\n","genus":"canine","species":"dog","family":"predatory","subspecies":"Cockapoo","class":"mammals","age":"2.3"}
+{"phylum":"chord","color":"white-redhead\n","genus":"canine","species":"dog","family":"predatory","subspecies":"Brittany","class":"mammals","age":"0.8"}
+{"phylum":"chord","color":"white-redhead\n","genus":"canine","species":"dog","family":"predatory","subspecies":"Bulldog","class":"mammals","age":"1.3"}
+{"phylum":"tetst","color":"tge\n","genus":"gew","species":"gwe","family":"gewgew","subspecies":"","class":"tesr","age":"32.0"}
+{"phylum":"chord","color":"whiten\n","genus":"hares","species":"hare","family":"rodents","subspecies":"white hare","class":"mammals","age":"2.0"}
+

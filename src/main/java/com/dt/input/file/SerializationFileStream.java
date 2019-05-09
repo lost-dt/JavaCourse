@@ -1,4 +1,4 @@
-package com.dt.input;
+package com.dt.input.file;
 
 import org.json.simple.parser.JSONParser;
 import org.json.simple.JSONObject;
@@ -16,10 +16,13 @@ public class SerializationFileStream {
         this.pathToFile = pathToFile;
     }
 
-    public ArrayList<Map<String, String>> animalsFromFile() {
+    public String[] animalsFromFile() {
+
+
+        String[] animals = new String[1000];
+        int arrayCount = 0;
         //JSON parser object to parse read file
         JSONParser jsonParser = new JSONParser();
-        ArrayList<Map<String, String>> resultInfo = new ArrayList<Map<String, String>>(20);
 
         BufferedReader br = null;
         FileReader fr = null;
@@ -42,18 +45,13 @@ public class SerializationFileStream {
                     e.printStackTrace();
                 }
 
-                Map<String, String> newAnimalInfo = new HashMap<String, String>();
 
-                newAnimalInfo.put("phylum", (String) animalInfo.get("phylum"));
-                newAnimalInfo.put("class", (String) animalInfo.get("class"));
-                newAnimalInfo.put("family", (String) animalInfo.get("family"));
-                newAnimalInfo.put("genus", (String) animalInfo.get("genus"));
-                newAnimalInfo.put("species", (String) animalInfo.get("species"));
-                newAnimalInfo.put("subspecies", (String) animalInfo.get("subspecies"));
-                newAnimalInfo.put("age", (String) animalInfo.get("age"));
-                newAnimalInfo.put("color", (String) animalInfo.get("color"));
+                String oneAnimalInfo = String.format("%s|%s|%s|%s|%s|%s|%s|%sn",
+                        (String) animalInfo.get("phylum"), (String) animalInfo.get("class"), (String) animalInfo.get("family"), (String) animalInfo.get("genus"),
+                        (String) animalInfo.get("species"), (String) animalInfo.get("subspecies"), (String) animalInfo.get("age"), (String) animalInfo.get("color"));
 
-                resultInfo.add(newAnimalInfo);
+
+                animals[arrayCount++] = oneAnimalInfo;
 
             }
 
@@ -79,11 +77,17 @@ public class SerializationFileStream {
 
         }
 
-        return resultInfo;
+        String[] resultAnimalInfo = new String[arrayCount - 1];
+        for(int i = 0; i < arrayCount - 1; i++) {
+            resultAnimalInfo[i] = animals[i];
+        }
+
+        return resultAnimalInfo;
 
     }
 
-    public void animalsToFile(ArrayList<Map<String, String>> animalsInfo) {
+    public void animalsToFile(String[] animalsInfo) {
+
 
         BufferedWriter bw = null;
         FileWriter fw = null;
@@ -93,32 +97,41 @@ public class SerializationFileStream {
             fw = new FileWriter(this.pathToFile);
             bw = new BufferedWriter(fw);
 
-            for(Map<String, String> animalInfo: animalsInfo) {
+            for(String animalInfo: animalsInfo) {
+
+                String[] valueSplit = animalInfo.split("\\|");
+
                 JSONObject animalJson = new JSONObject();
 
-                animalJson.put("phylum", animalInfo.get("phylum"));
-                animalJson.put("class", animalInfo.get("class"));
-                animalJson.put("family", animalInfo.get("family"));
-                animalJson.put("genus", animalInfo.get("genus"));
-                animalJson.put("species", animalInfo.get("species"));
-                animalJson.put("subspecies", animalInfo.get("subspecies"));
-                animalJson.put("age", animalInfo.get("age"));
-                animalJson.put("color", animalInfo.get("color"));
+                animalJson.put("phylum", valueSplit[0]);
+                animalJson.put("class", valueSplit[1]);
+                animalJson.put("family", valueSplit[2]);
+                animalJson.put("genus", valueSplit[3]);
+                animalJson.put("species", valueSplit[4]);
+                animalJson.put("subspecies", valueSplit[5]);
+                animalJson.put("age", valueSplit[6]);
+                animalJson.put("color", valueSplit[7]);
                 bw.write(String.format("%s\n", animalJson.toJSONString()));
 
             }
 
         } catch (IOException e) {
-            System.err.format("IOException: %s%n", e);
+
+            e.printStackTrace();
+
         } finally {
             try {
                 if (bw != null)
+
                     bw.close();
 
                 if (fw != null)
+
                     fw.close();
+
             } catch (IOException ex) {
-                System.err.format("IOException: %s%n", ex);
+
+                ex.printStackTrace();
             }
         }
 

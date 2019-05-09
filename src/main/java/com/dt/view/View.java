@@ -2,9 +2,9 @@ package com.dt.view;
 
 
 import com.dt.utils.TablePrinter;
-import com.dt.input.ConsoleStream;
-import com.dt.input.UncorrectedKey;
-import com.dt.input.InputValidator;
+import com.dt.input.console.ConsoleStream;
+import com.dt.input.errors.UncorrectedKey;
+import com.dt.input.errors.InputValidator;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -27,39 +27,47 @@ public class View {
         table.print();
     }
 
-    public Map<String, String>  createAnimalFromConsole() {
+    public String createAnimalFromConsole() {
 
-        Map<String, String> mapAnimalValues = new HashMap<String, String>();
+        String mapAnimalValues = "";
 
         System.out.println("Enter phylum of an animal: ");
-        mapAnimalValues.put("phylum", ConsoleStream.stringFromConsole());
+        mapAnimalValues += ConsoleStream.stringFromConsole() + "|";
+
 
 
         System.out.println("Enter class of an animal: ");
-        mapAnimalValues.put("class", ConsoleStream.stringFromConsole());
+        mapAnimalValues += ConsoleStream.stringFromConsole() + "|";
+
 
 
         System.out.println("Enter family of an animal: ");
-        mapAnimalValues.put("family", ConsoleStream.stringFromConsole());
+        mapAnimalValues += ConsoleStream.stringFromConsole() + "|";
+
 
 
         System.out.println("Enter genus of an animal: ");
-        mapAnimalValues.put("genus", ConsoleStream.stringFromConsole());
+        mapAnimalValues += ConsoleStream.stringFromConsole() + "|";
+
 
 
         System.out.println("Enter species of an animal");
-        mapAnimalValues.put("species", ConsoleStream.stringFromConsole());
+        mapAnimalValues += ConsoleStream.stringFromConsole() + "|";
+
 
 
         System.out.println("Enter subspecies of an animal");
-        mapAnimalValues.put("subspecies", ConsoleStream.stringFromConsole());
+        mapAnimalValues += ConsoleStream.stringFromConsole() + "|";
+
 
 
         System.out.println("Enter age of an animal");
-        mapAnimalValues.put("age", Float.toString(ConsoleStream.floatFromConsole()));
+        mapAnimalValues += Float.toString(ConsoleStream.floatFromConsole())+ "|";
+
 
         System.out.println("Enter color of an animal");
-        mapAnimalValues.put("color", ConsoleStream.stringFromConsole());
+        mapAnimalValues += ConsoleStream.stringFromConsole() + "|";
+
 
         this.cleanConsole();
 

@@ -1,8 +1,8 @@
-package com.dt.input;
+package com.dt.input.errors;
 
 public class InputValidator {
 
-    static void validationFloatNumber(String stringToParse){
+    public static void validationFloatNumber(String stringToParse){
 
         String pattern = "[0-9.]*$";
 
@@ -17,7 +17,7 @@ public class InputValidator {
 
         String pattern = "[0-9]*$";
 
-        if(!stringToParse.matches(pattern)) {
+        if((!stringToParse.matches(pattern)) ||  (stringToParse.length() == 0)) {
             throw new UncorrectedKey(String.format("Your string (%s) is not correct to key!\n", stringToParse));
         }
     }

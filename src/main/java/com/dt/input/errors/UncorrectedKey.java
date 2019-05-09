@@ -1,4 +1,4 @@
-package com.dt.input;
+package com.dt.input.errors;
 
 public class UncorrectedKey extends java.lang.RuntimeException {
 

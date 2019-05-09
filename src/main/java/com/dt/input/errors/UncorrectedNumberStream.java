@@ -1,8 +1,8 @@
-package com.dt.input;
+package com.dt.input.errors;
 
 import java.io.*;
 
-class UncorrectedNumberStream extends java.lang.RuntimeException {
+public class UncorrectedNumberStream extends java.lang.RuntimeException {
 
     UncorrectedNumberStream(String message) {
         System.out.println(message);
