@@ -1,16 +1,22 @@
 package com.dt.model;
 
+import org.apache.log4j.Logger;
+
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Model {
+
+    private static final Logger log = Logger.getLogger(Model.class);
+
     private Animal[] animals;
 
     public Model() {
         int sizeArrayAnimals = 20;
         animals = new Animal[sizeArrayAnimals];
+        log.info("Model object was created.");
     }
 
     public Model(int sizeArrayAnimals) {

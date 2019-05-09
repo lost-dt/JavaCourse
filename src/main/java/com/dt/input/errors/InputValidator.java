@@ -2,6 +2,7 @@ package com.dt.input.errors;
 
 public class InputValidator {
 
+
     public static void validationFloatNumber(String stringToParse){
 
         String pattern = "[0-9.]*$";
@@ -9,6 +10,7 @@ public class InputValidator {
         if(!stringToParse.matches(pattern)) {
 
             throw new UncorrectedNumberStream(String.format("Your string (%s) is not number!\n", stringToParse));
+
         }
 
     }

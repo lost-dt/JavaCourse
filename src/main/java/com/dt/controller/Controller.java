@@ -4,17 +4,21 @@ import com.dt.input.file.SerializationFileStream;
 import com.dt.input.file.TextFileStream;
 import com.dt.model.Model;
 import com.dt.view.View;
+import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 
 public class Controller {
+
+    private static final Logger log = Logger.getLogger(Controller.class);
+
+
     private Model model;
     private View view;
 
-    private TextFileStream textFileStream = new TextFileStream("/Users/x/Documents/JavaCourse/input/AnimalInfoFile/AnimalTextFormat.txt");
-    private SerializationFileStream serializationFileStream = new SerializationFileStream("/Users/x/Documents/JavaCourse/input/AnimalInfoFile/AnimalSerializationFormat.txt");
+    private TextFileStream textFileStream = new TextFileStream("/home/lost-dt/IdeaProjects/JavaCourse/input/AnimalInfoFile/AnimalTextFormat.txt");
+    private SerializationFileStream serializationFileStream = new SerializationFileStream("/home/lost-dt/IdeaProjects/JavaCourse/input/AnimalInfoFile/AnimalSerializationFormat.txt");
     // variable to more in array
     private int pointArray = 0;
     private int maxSizeAnimals;
@@ -23,18 +27,21 @@ public class Controller {
         model = new Model();
         view = new View();
         maxSizeAnimals = 100;
+        log.info("Controller object was created.");
     }
 
     public Controller(Model model, View view) {
         this.model = model;
         this.view = view;
         maxSizeAnimals = 100;
+        log.info("Controller object was created.");
     }
 
     public Controller(int sizeArrayAnimals) {
         maxSizeAnimals = sizeArrayAnimals - 1;
         model = new Model(sizeArrayAnimals);
         view = new View();
+        log.info("Controller object was created.");
     }
 
 

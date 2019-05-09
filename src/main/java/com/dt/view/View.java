@@ -5,12 +5,18 @@ import com.dt.utils.TablePrinter;
 import com.dt.input.console.ConsoleStream;
 import com.dt.input.errors.UncorrectedKey;
 import com.dt.input.errors.InputValidator;
+import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 
 public class View {
+    private static final Logger log = Logger.getLogger(View.class);
+    public View() {
+        log.info("View object was created.");
+    }
+
     public void printAnimalInfo(ArrayList<String> field, ArrayList<String> row) {
         TablePrinter table = new TablePrinter(field);
         table.addRow(row);

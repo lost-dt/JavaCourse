@@ -1,5 +1,7 @@
 package com.dt.input.file;
 
+import org.apache.log4j.Logger;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -7,6 +9,8 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 
 public class TextFileStream {
+
+    private static final Logger log = Logger.getLogger(TextFileStream.class);
 
     private final String pathToFile;
 
@@ -33,6 +37,7 @@ public class TextFileStream {
         } catch (IOException e) {
 
             e.printStackTrace();
+            log.error(e);
 
         } finally {
 
@@ -47,6 +52,7 @@ public class TextFileStream {
             } catch (IOException ex) {
 
                 ex.printStackTrace();
+                log.error(ex);
 
             }
 
@@ -84,6 +90,7 @@ public class TextFileStream {
         } catch (IOException e) {
 
             e.printStackTrace();
+            log.error(e);
 
         } finally {
 
@@ -98,6 +105,7 @@ public class TextFileStream {
             } catch (IOException ex) {
 
                 ex.printStackTrace();
+                log.error(ex);
 
             }
 
@@ -129,6 +137,7 @@ public class TextFileStream {
 
         } catch (IOException e) {
             e.printStackTrace();
+            log.error(e);
         } finally {
             try {
                 if (bw != null)
@@ -138,6 +147,7 @@ public class TextFileStream {
                     fw.close();
             } catch (IOException ex) {
                 ex.printStackTrace();
+                log.error(ex);
             }
         }
     }

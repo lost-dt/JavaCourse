@@ -1,5 +1,6 @@
 package com.dt.input.file;
 
+import org.apache.log4j.Logger;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
@@ -10,6 +11,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SerializationFileStream {
+
+    private static final Logger log = Logger.getLogger(SerializationFileStream.class);
+
     private final String pathToFile;
 
     public SerializationFileStream(String pathToFile) {
@@ -43,6 +47,7 @@ public class SerializationFileStream {
                     animalInfo = (JSONObject) jsonParser.parse(sCurrentLine);
                 } catch (ParseException e) {
                     e.printStackTrace();
+                    log.error(e);
                 }
 
 
@@ -58,6 +63,7 @@ public class SerializationFileStream {
         } catch (IOException e) {
 
             e.printStackTrace();
+            log.error(e);
 
         } finally {
 
@@ -72,7 +78,7 @@ public class SerializationFileStream {
             } catch (IOException ex) {
 
                 ex.printStackTrace();
-
+                log.error(ex);
             }
 
         }
@@ -98,6 +104,7 @@ public class SerializationFileStream {
             bw = new BufferedWriter(fw);
 
             for(String animalInfo: animalsInfo) {
+                animalInfo = animalInfo.replace("\n", "");
 
                 String[] valueSplit = animalInfo.split("\\|");
 
@@ -118,6 +125,7 @@ public class SerializationFileStream {
         } catch (IOException e) {
 
             e.printStackTrace();
+            log.error(e);
 
         } finally {
             try {
@@ -132,6 +140,7 @@ public class SerializationFileStream {
             } catch (IOException ex) {
 
                 ex.printStackTrace();
+                log.error(ex);
             }
         }
 
