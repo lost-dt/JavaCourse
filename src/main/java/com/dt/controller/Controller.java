@@ -17,8 +17,8 @@ public class Controller {
     private Model model;
     private View view;
 
-    private TextFileStream textFileStream = new TextFileStream("/home/lost-dt/IdeaProjects/JavaCourse/input/AnimalInfoFile/AnimalTextFormat.txt");
-    private SerializationFileStream serializationFileStream = new SerializationFileStream("/home/lost-dt/IdeaProjects/JavaCourse/input/AnimalInfoFile/AnimalSerializationFormat.txt");
+    private TextFileStream textFileStream = new TextFileStream("/Users/x/Documents/JavaCourse/input/AnimalInfoFile/AnimalTextFormat.txt");
+    private SerializationFileStream serializationFileStream = new SerializationFileStream("/Users/x/Documents/JavaCourse/input/AnimalInfoFile/AnimalSerializationFormat.txt");
     // variable to more in array
     private int pointArray = 0;
     private int maxSizeAnimals;
@@ -118,6 +118,7 @@ public class Controller {
 
         if(this.pointArray > this.maxSizeAnimals - 1) {
             this.view.printMessage("Sorry, but size of animals max now!");
+            log.warn("Try add animal to max filled model.");
         }
         else {
 
@@ -202,6 +203,7 @@ public class Controller {
 
             if(this.pointArray > this.maxSizeAnimals - 1) {
                 this.view.printMessage("Sorry, but array of animals have max size now!");
+                log.warn("Try add animal to max filled model.");
                 break;
             }
             else {
@@ -230,6 +232,7 @@ public class Controller {
 
             if(this.pointArray > this.maxSizeAnimals - 1) {
                 this.view.printMessage("Sorry, but size of animals max now!");
+                log.warn("Try add animal to max filled model.");
                 break;
             }
             else {

@@ -15,7 +15,7 @@ public class Main {
 
         animalsController.startMenu();
 
-        log.info("End work.");
+        log.info("End work.\n");
     }
 }
 

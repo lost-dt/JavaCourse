@@ -8,8 +8,7 @@ import com.dt.input.errors.InputValidator;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.HashMap;
+
 
 public class View {
     private static final Logger log = Logger.getLogger(View.class);
@@ -17,21 +16,6 @@ public class View {
         log.info("View object was created.");
     }
 
-    public void printAnimalInfo(ArrayList<String> field, ArrayList<String> row) {
-        TablePrinter table = new TablePrinter(field);
-        table.addRow(row);
-
-        table.print();
-    }
-
-    public void printAnimalsInfo(ArrayList<String> field, ArrayList<ArrayList<String>> rows) {
-        TablePrinter table = new TablePrinter(field);
-        for(ArrayList<String> row : rows) {
-            table.addRow(row);
-        }
-
-        table.print();
-    }
 
     public String createAnimalFromConsole() {
 
@@ -75,6 +59,7 @@ public class View {
         mapAnimalValues += ConsoleStream.stringFromConsole() + "|";
 
 
+        log.info("Info about animal success read from console.");
         this.cleanConsole();
 
         return mapAnimalValues;
@@ -129,6 +114,28 @@ public class View {
         for(int i = 0; i < 1000; i++) {
             System.out.println("\b");
         }
+    }
+
+    public void printAnimalInfo(ArrayList<String> field, ArrayList<String> row) {
+        field.add(0, "index");
+        TablePrinter table = new TablePrinter(field);
+        row.add(0, new Integer(1).toString());
+        table.addRow(row);
+
+        table.print();
+    }
+
+    public void printAnimalsInfo(ArrayList<String> field, ArrayList<ArrayList<String>> rows) {
+
+        field.add(0, "index");
+        TablePrinter table = new TablePrinter(field);
+        for(Integer i =0 ; i < rows.size(); i ++) {
+
+            rows.get(i).add(0, i.toString());
+            table.addRow(rows.get(i));
+        }
+
+        table.print();
     }
 
     public void manipulationManagerMessage() {

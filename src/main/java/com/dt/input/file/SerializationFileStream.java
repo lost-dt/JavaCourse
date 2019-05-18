@@ -6,9 +6,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+
 
 public class SerializationFileStream {
 
@@ -52,8 +50,8 @@ public class SerializationFileStream {
 
 
                 String oneAnimalInfo = String.format("%s|%s|%s|%s|%s|%s|%s|%sn",
-                        (String) animalInfo.get("phylum"), (String) animalInfo.get("class"), (String) animalInfo.get("family"), (String) animalInfo.get("genus"),
-                        (String) animalInfo.get("species"), (String) animalInfo.get("subspecies"), (String) animalInfo.get("age"), (String) animalInfo.get("color"));
+                        animalInfo.get("phylum"), animalInfo.get("class"), animalInfo.get("family"), animalInfo.get("genus"),
+                        animalInfo.get("species"), animalInfo.get("subspecies"), animalInfo.get("age"), animalInfo.get("color"));
 
 
                 animals[arrayCount++] = oneAnimalInfo;
